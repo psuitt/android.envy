@@ -3,6 +3,8 @@ package com.envyathletics.envy.training;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.envyathletics.envy.R;
+
 public class TrainingVideo extends AppCompatActivity {
 
     @Override

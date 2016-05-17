@@ -13,6 +13,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.envyathletics.envy.R;
+
 public class TrainingList extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
