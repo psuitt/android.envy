@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 
 import com.envyathletics.envy.R;
 import com.envyathletics.envy.activity.generic.MainNavigationActivity;
@@ -29,12 +30,21 @@ public class TrainingList extends MainNavigationActivity {
                 startActivity(new Intent(view.getContext(), TrainingVideo.class));
             }
         });
+        createTrainingList(savedInstanceState);
 
     }
 
     @Override
     public int getContentViewLayout() {
         return R.layout.activity_training_list;
+    }
+
+    private void createTrainingList(final Bundle savedInstanceState) {
+
+        final ListView myListView = (ListView) findViewById(R.id.training_list_listview);
+
+        myListView.setAdapter(new TrainingListAdapter(this));
+
     }
 
 }

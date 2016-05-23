@@ -48,11 +48,23 @@ public class JsonUtil {
         return list;
     }
 
+    public static JSONArray stringToJSONArray(final String list) {
+
+        try {
+
+            return new JSONArray(list);
+
+        } catch (final JSONException e) {
+            Log.w(TAG, "Unable to parse json.");
+        }
+
+        return null;
+
+    }
+
     public static JSONArray stringListToJSONArray(final List<String> list) {
 
-        final JSONArray array = new JSONArray(list);
-
-        return array;
+        return new JSONArray(list);
 
     }
 

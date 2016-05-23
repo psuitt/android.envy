@@ -13,6 +13,8 @@ public class TrainingVideo extends AppCompatActivity {
 
     private static final String TAG = "TrainingVideo";
 
+    public static final String INTENT_EXTRA_URL = "url";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +23,8 @@ public class TrainingVideo extends AppCompatActivity {
         VideoView videoView = (VideoView) findViewById(R.id.training_video_view);
 
         try {
-            videoView.setVideoURI(Uri.parse("https://www.youtube.com/watch?v=ORUoFcxJAb0"));
+            final String url = getIntent().getStringExtra(INTENT_EXTRA_URL);
+            videoView.setVideoURI(Uri.parse(url));
             MediaController mc = new MediaController(this);
             videoView.setMediaController(mc);
             videoView.requestFocus();
