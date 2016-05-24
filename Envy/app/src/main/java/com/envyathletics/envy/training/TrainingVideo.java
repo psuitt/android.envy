@@ -1,17 +1,23 @@
 package com.envyathletics.envy.training;
 
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
 import com.envyathletics.envy.R;
+import com.google.android.youtube.player.YouTubeBaseActivity;
+import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayerView;
 
-public class TrainingVideo extends AppCompatActivity {
+public class TrainingVideo extends YouTubeBaseActivity {
 
     private static final String TAG = "TrainingVideo";
+
+    private YouTubePlayerView youTubePlayerView;
+    private YouTubePlayer.OnInitializedListener onInitializedListener;
 
     public static final String INTENT_EXTRA_URL = "url";
 
@@ -20,19 +26,21 @@ public class TrainingVideo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_training_video);
 
-        VideoView videoView = (VideoView) findViewById(R.id.training_video_view);
+        youTubePlayerView = (YouTubePlayerView) findViewById(R.id.training_video_view);
 
-        try {
-            final String url = getIntent().getStringExtra(INTENT_EXTRA_URL);
-            videoView.setVideoURI(Uri.parse(url));
-            MediaController mc = new MediaController(this);
-            videoView.setMediaController(mc);
-            videoView.requestFocus();
-            videoView.start();
-            mc.show();
-        } catch (final Exception e) {
-            Log.e(TAG, e.getMessage(), e);
-        }
+        onInitializedListener = new YouTubePlayer.OnInitializedListener() {
+            @Override
+            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
+                youTubePlayer.loadVideo("ORUoFcxJAb0");
+            }
+
+            @Override
+            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
+
+            }
+        };
+
+        youTubePlayerView.initialize("API_KEY", onInitializedListener);
 
 
     }

@@ -23,13 +23,6 @@ public class TrainingList extends MainNavigationActivity {
     @Override
     public void afterOnCreate(Bundle savedInstanceState) {
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.test_button);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(view.getContext(), TrainingVideo.class));
-            }
-        });
         createTrainingList(savedInstanceState);
 
     }
